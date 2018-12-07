@@ -14,14 +14,9 @@ namespace AppNews.Models
 
     public class News
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public DateTime Post { get; set; }
-        [Required]
-        [StringLength(100)]
         public string Title { get; set; }
-        [Required]
-        [StringLength(250)]
         public string Content { get; set; }
         public string Thumbnail { get; set; }
     }
