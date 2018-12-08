@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppNews.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,8 @@ namespace AppNews.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            List<News> _news = Migrations.Services.GetJson("http://localhost:51221/api/News").Result.ToList();
+            return View(_news);
         }
 
         public ActionResult About()

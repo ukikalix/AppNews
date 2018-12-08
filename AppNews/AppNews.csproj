@@ -160,6 +160,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Services.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
