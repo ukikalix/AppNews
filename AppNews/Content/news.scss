@@ -1,0 +1,52 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,600');
+
+$_font_1: 'Noto Serif SC', serif;
+
+* {
+    font-family: $_font_1;
+}
+
+.navbar-brand {
+    color: white;
+    background: #c00;
+}
+
+._new {
+    text-align: center;
+
+    h1 {
+        font-size: 48px;
+    }
+
+    section {
+        font-size: 22px;
+        font-weight: lighter;
+    }
+}
+
+.thumbnail-news {
+    min-height: 320px;
+
+
+    h1 {
+        font-family: $_font_1;
+        font-size: 22px;
+        color: black;
+        font-weight: 700;
+        -webkit-font-smoothing: antialiased;
+
+        &:hover {
+            color: #c00;
+            text-decoration: none;
+        }
+    }
+
+    figcaption {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.new-thumb {
+    margin: auto;
+}

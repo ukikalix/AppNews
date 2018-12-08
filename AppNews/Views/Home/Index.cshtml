@@ -10,16 +10,17 @@
 </div>
 
 <div class="row" ng-controller="newsCtrl">
-    <div class="col-md-4">
-        <ul>
-            <li ng-repeat="nw in news">
-                <figure>
-                    <h1>{{ nw.Title }}</h1>
-                    <figcaption>text</figcaption>
-                </figure>
-            </li>
-        </ul>
+    <div class="col-md-3" ng-repeat="nw in news">
+        <figure class="thumbnail thumbnail-news">
+            <img src="{{ nw.Thumbnail }}" alt="{{ nw.Title }}" />
+            <a href="/Home/About/{{ nw.Id }}">
+                <h1>{{ nw.Title }}</h1>
+            </a>
+            <em class="badge">{{ nw.Post | date }}</em>
+            <figcaption>{{ nw.Content }}</figcaption>
+        </figure>
     </div>
+    @Html.ActionLink("View all news", "AllNews", "Home", new { @class = "btn btn-info" })
 </div>
 
 <script>

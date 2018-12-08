@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AppNews.Models.News>
+
+@{
+    ViewBag.Title = "AllNews";
+}
+
+
+<div class="row" ng-controller="newsALLCtrl">
+    <h2>All News</h2>
+    <div class="col-md-3" ng-repeat="nw in news">
+        <figure class="thumbnail thumbnail-news">
+            <img src="{{ nw.Thumbnail }}" alt="{{ nw.Title }}" />
+            <a href="/Home/About/{{ nw.Id }}">
+                <h1>{{ nw.Title }}</h1>
+            </a>
+            <em class="badge">{{ nw.Post | date }}</em>
+            <figcaption>{{ nw.Content }}</figcaption>
+        </figure>
+    </div>
+</div>
+
+<script>
+    var _theObject = angular.module('newsApp', []);
+
+    _theObject.controller('newsALLCtrl', function NewsAppController($scope, $http) {
+        $scope.news = [];
+        $http.get('http://localhost:51221/api/NewsAll').then(function (response) {
+            $scope.news = response.data;
+        });
+    });
+</script>

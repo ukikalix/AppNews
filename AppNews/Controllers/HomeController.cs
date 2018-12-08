@@ -21,10 +21,26 @@ namespace AppNews.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public async Task<ActionResult> About(string id)
         {
-            ViewBag.Message = "Your application description page.";
+            News n = new News();
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    n = Newtonsoft.Json.JsonConvert.DeserializeObject<News>(await client.GetStringAsync(String.Concat("http://localhost:51221/api/News/", id)));
+                }
+                catch (Exception)
+                {
+                    new News();
+                }
+            }
 
+            return View(n);
+        }
+
+        public async Task<ActionResult> AllNews()
+        {
             return View();
         }
 

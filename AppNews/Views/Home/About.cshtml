@@ -1,7 +1,23 @@
-﻿@{
+﻿@model AppNews.Models.News
+
+@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div class="_new">
+    @if (!string.IsNullOrEmpty(Model.Thumbnail))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <img src="@Model.Thumbnail" alt="@Model.Title" class="img-responsive new-thumb" />
+            </div>
+        </div>
+    }
+
+    <h1>@Model.Title</h1>
+    <hr />
+    <section>
+        @Html.Raw(Model.Content)
+    </section>
+
+</div>
