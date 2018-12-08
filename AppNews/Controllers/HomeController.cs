@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,10 +11,14 @@ namespace AppNews.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            List<News> _news = Migrations.Services.GetJson("http://localhost:51221/api/News").Result.ToList();
-            return View(_news);
+            //List<News> n = new List<News>();
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    n = Newtonsoft.Json.JsonConvert.DeserializeObject<List<News>>(await client.GetStringAsync("http://localhost:51221/api/News"));
+            //}
+            return View();
         }
 
         public ActionResult About()

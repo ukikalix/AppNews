@@ -25,16 +25,10 @@
 <script>
     var _theObject = angular.module('newsApp', []);
 
-    _theObject.controller('newsCtrl', function NewsAppController($scope) {
-        $scope.news = [
-            @foreach (News item in Model)
-            {
-                @:Title: @item.Title,
-                @:Content: @item.Content,
-                @:Post: @item.Post,
-                @:Thumbnail: @item.Thumbnail
-            }
-        ];
-        $scope.apply();
+    _theObject.controller('newsCtrl', function NewsAppController($scope, $http) {
+        $scope.news = [];
+        $http.get('http://localhost:51221/api/News').then(function (response) {
+            $scope.news = response.data;
+        });
     });
 </script>

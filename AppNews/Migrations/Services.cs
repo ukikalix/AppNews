@@ -10,25 +10,16 @@ namespace AppNews.Migrations
 {
     public class Services
     {
-        public static async Task<List<News>> GetJson(string uri)
+        public static async Task<List<News>> GetJsonAsync(string param)
         {
+            string uri = "http://localhost:51221/api/" + param;
             List<News> _list = new List<News>();
-            using (var client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    client.BaseAddress = new Uri(uri);
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-                    HttpResponseMessage response = await client.GetAsync(uri);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var result = await client.GetStringAsync(uri);
-                        _list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<News>>(result);
-                        return _list;
-                    } else
-                        return new List<News>();
+                    _list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<News>>(await client.GetStringAsync(uri));
+                    return _list;
                 }
                 catch (Exception)
                 {
