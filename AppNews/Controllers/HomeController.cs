@@ -44,6 +44,12 @@ namespace AppNews.Controllers
             return View();
         }
 
+        public async Task<ActionResult> Search(string kwords)
+        {
+            ViewBag.Keywords = kwords;
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

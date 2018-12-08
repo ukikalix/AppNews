@@ -176,6 +176,10 @@
     <Content Include="Content\news.min.css">
       <DependentUpon>news.css</DependentUpon>
     </Content>
+    <Content Include="Content\rzslider.css" />
+    <Content Include="Content\rzslider.min.css">
+      <DependentUpon>rzslider.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -187,6 +191,7 @@
     </Content>
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Content\news.scss" />
+    <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -202,6 +207,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\underscore.es5.js">
+      <DependentUpon>underscore.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\underscore.es5.min.js">
+      <DependentUpon>underscore.es5.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\underscore.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -217,6 +229,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\AllNews.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

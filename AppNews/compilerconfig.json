@@ -2,5 +2,9 @@
   {
     "outputFile": "Content/news.css",
     "inputFile": "Content/news.scss"
+  },
+  {
+    "outputFile": "Scripts/underscore.es5.js",
+    "inputFile": "Scripts/underscore.js"
   }
 ]
