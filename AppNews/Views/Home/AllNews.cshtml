@@ -4,22 +4,25 @@
     ViewBag.Title = "AllNews";
 }
 
-<link href="~/Content/rzslider.min.css" rel="stylesheet" />
-
 <div class="row" ng-controller="newsALLCtrl">
     <h2>All News</h2>
     <div class="col-md-12">
         <div class="col-md-2">
             <h3>Filters</h3>
             <h4>Year</h4>
-            <rzslider rz-slider-model="sliderDate.min"
-                      rz-slider-high="sliderDate.max"
-                      rz-slider-options="sliderDate.options"></rzslider>
+            <div class="form-group">
+                <label>Min date</label>
+                <input type="text" class="form-control" name="max" ng-model="min">
+            </div>
+            <div class="form-group">
+                <label>Max date</label>
+                <input type="text" class="form-control" name="min" ng-model="max">
+            </div>
             <hr />
 
         </div>
         <div class="col-md-10">
-            <div class="col-md-3" ng-repeat="nw in news">
+            <div class="col-md-3" ng-repeat="nw in news | dateRange : min : max">
                 <figure class="thumbnail thumbnail-news">
                     <img src="{{ nw.Thumbnail }}" alt="{{ nw.Title }}" />
                     <a href="/Home/About/{{ nw.Id }}">
@@ -33,33 +36,24 @@
     </div>
 </div>
 
-<script src="https://rawgit.com/GMaxera/angularjs-slider/master/dist/rzslider.js"></script>
 <script src="~/Scripts/underscore.es5.min.js"></script>
 
 <script>
-    var _theObject = angular.module('newsApp', ['rzModule']);
+    var _theObject = angular.module('newsApp', []);
 
     _theObject.controller('newsALLCtrl', function NewsAppController($scope, $http) {
         $scope.news = [];
-        $scope.sliderDate = {
-            min: 2010,
-            max: new Date().getFullYear(),
-            options: {
-                floor: 2010,
-                ceil: new Date().getFullYear(),
-            },
-        }
+        $scope.min = '05/02/2015 0:00:00';
+        $scope.max = '31/12/2018 0:00:00';
 
         $http.get('http://localhost:51221/api/NewsAll').then(function (response) {
             $scope.news = response.data;
         });
-
-        $scope.$watch("sliderDate.min", function (newValue, oldValue) {
-            console.log(newValue);
-        });
-
-        $scope.$watch("sliderDate.max", function (newValue, oldValue) {
-            console.log(newValue);
-        });
+    }).filter('dateRange', function () {
+        return function (records, min, max) {
+            return records.filter(function (news) {
+                return news.Post >= min && news.Post <= max;
+            });
+        }
     });
 </script>

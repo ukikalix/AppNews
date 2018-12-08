@@ -23,10 +23,12 @@
 
     _theObject.controller('searchCtrl', function NewsAppController($scope, $http) {
         $scope.news = [];
+
         var uri = 'http://localhost:51221/api/NewsAll/' + '@Convert.ToString(ViewBag.Keywords)';
-        console.log(uri);
+
         $http.get(uri).then(function (response) {
             $scope.news = response.data;
+
         });
     });
 </script>
