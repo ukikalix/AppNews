@@ -11,3 +11,7 @@ en la vista de todas las noticias.
 
 Se utilizo un archivo con extension .SCSS, sin embargo, ya esta compilado el minificado a ser renderizado,
 por ende no es necesario generarlo nuevamente.
+
+El repositorio de la WEB API es el siguiente:
+
+https://github.com/ukikalix/AppNews/tree/master/AppNews
