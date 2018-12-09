@@ -24,8 +24,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("News", "AllNews", "Home")</li>
                     <li>
                         @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { enctype = "multipart/form-data", @class = "navbar-form navbar-left" }))
                         {
